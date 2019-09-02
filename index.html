@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>textile</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <!-- We've included a slightly modified version of A-Frame, which fixes some polish concerns -->
     <script src="//cdn.8thwall.com/web/aframe/8frame-0.8.2.min.js"></script>
 
@@ -21,30 +25,8 @@
   </head>
   <body>
     <!-- 2D overlay UI can be done in HTML -->
-    <div
-      id="overlay"
-      style="position: absolute;
-                left: 0;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                z-index: 5;
-                pointer-events: none;"
-    >
-      <div
-        id="loadingScreen"
-        style="position: absolute;
-                  left: 0;
-                  right: 0;
-                  top: 0;
-                  bottom: 0;
-                  text-align: center;
-                  font-size: 3vh;
-                  background-color: black;
-                  padding: 5vh;
-                  font-family: sans-serif;
-                  pointer-events: auto;"
-      >
+    <div id="overlay">
+      <div id="loadingScreen">
         <h2>loading...</h2>
       </div>
     </div>
