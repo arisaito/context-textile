@@ -53,8 +53,8 @@
       xrweb="disableWorldTracking: true"
       xrextras-gesture-detector
       xrextras-almost-there
-      xrextras-loading
       xrextras-runtime-error
+      loading-screen
     >
       <a-assets></a-assets>
 
@@ -123,16 +123,6 @@
       </a-entity>
     </a-scene>
     <script>
-      // Simple script to reset the camera position to its initial position.
-      AFRAME.registerComponent("tap-recenter", {
-        init: function() {
-          const scene = this.el.sceneEl;
-          scene.addEventListener("click", () => {
-            scene.emit("recenter", {});
-          });
-        }
-      });
-
       // Basic example of controlling the loading screen
       AFRAME.registerComponent("loading-screen", {
         init: function() {
