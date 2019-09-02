@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="jp">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>textile</title>
     <!-- We've included a slightly modified version of A-Frame, which fixes some polish concerns -->
-    <script src="//cdn.8thwall.com/web/aframe/8frame-0.8.2.min.js"></script>
+    <script src="//cdn.8thwall.com/web/aframe/8frame-0.9.2.min.js"></script>
+    <!-- <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script> -->
 
     <!-- 8thWall Web - Replace the app key here with your own app key -->
     <script
@@ -72,27 +73,18 @@
                   font-family: sans-serif;
                   pointer-events: auto;"
       >
-        <!-- <img
-          style="width: 70%;
-                    max-width: 70%;
-                    height: auto;"
-          src="images/loading.png"
-        /> -->
         <h2>loading...</h2>
       </div>
     </div>
 
     <!-- Add the 'xrweb' attribute to your scene to make it an 8th Wall Web A-FRAME scene. -->
     <a-scene xrweb loading-screen>
-      <a-assets>
-        <a-asset-item id="tree-obj" src="models/moneXtree.obj"></a-asset-item>
-        <a-asset-item id="tree-mtl" src="models/moneXtree.mtl"></a-asset-item>
-      </a-assets>
+      <a-assets> </a-assets>
 
       <a-camera position="0 0 0"></a-camera>
 
       <!-- Light -->
-      <!-- <a-entity
+      <a-entity
         light="type: directional;
                castShadow: true;
                intensity: 0.8;
@@ -101,7 +93,7 @@
                shadowMapWidth: 1024;"
         position="1 4.3 2.5"
       >
-      </a-entity> -->
+      </a-entity>
 
       <!-- <a-light type="ambient" intensity="1"></a-light> -->
 
