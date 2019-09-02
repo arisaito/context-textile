@@ -72,12 +72,13 @@
                   font-family: sans-serif;
                   pointer-events: auto;"
       >
-        <img
+        <!-- <img
           style="width: 70%;
                     max-width: 70%;
                     height: auto;"
           src="images/loading.png"
-        />
+        /> -->
+        <h2>loading...</h2>
       </div>
     </div>
 
@@ -88,10 +89,10 @@
         <a-asset-item id="tree-mtl" src="models/moneXtree.mtl"></a-asset-item>
       </a-assets>
 
-      <a-camera position="0 8 8"></a-camera>
+      <a-camera position="0 0 0"></a-camera>
 
       <!-- Light -->
-      <a-entity
+      <!-- <a-entity
         light="type: directional;
                castShadow: true;
                intensity: 0.8;
@@ -100,13 +101,13 @@
                shadowMapWidth: 1024;"
         position="1 4.3 2.5"
       >
-      </a-entity>
+      </a-entity> -->
 
-      <a-light type="ambient" intensity="1"></a-light>
+      <!-- <a-light type="ambient" intensity="1"></a-light> -->
 
       <!-- Object -->
       <a-box
-        position="0 0 0"
+        position="1 1 1"
         color="white"
         animation="type: rotation; to: 0 360 0;"
       ></a-box>
