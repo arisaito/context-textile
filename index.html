@@ -39,7 +39,7 @@
                   bottom: 0;
                   text-align: center;
                   font-size: 3vh;
-                  background-color: white;
+                  background-color: black;
                   padding: 5vh;
                   font-family: sans-serif;
                   pointer-events: auto;"
@@ -49,10 +49,20 @@
     </div>
 
     <!-- Add the 'xrweb' attribute to your scene to make it an 8th Wall Web A-FRAME scene. -->
-    <a-scene xrweb xrextras-almost-there loading-screen>
-      <a-assets> </a-assets>
+    <a-scene
+      xrweb="disableWorldTracking: true"
+      xrextras-gesture-detector
+      xrextras-almost-there
+      xrextras-loading
+      xrextras-runtime-error
+    >
+      <a-assets></a-assets>
 
-      <a-camera position="0 8 8"></a-camera>
+      <a-camera
+        position="0 8 8"
+        raycaster="objects: .cantap"
+        cursor="fuse: false; rayOrigin: mouse;"
+      ></a-camera>
 
       <!-- Light -->
       <a-entity
@@ -74,40 +84,43 @@
 
       <a-light type="ambient" intensity="1"></a-light>
 
-      <!-- Object -->
-      <a-box
-        position="-1.7 0.5 -2"
-        rotation="0 45 0"
-        material="roughness: 0.8; metalness: 0.2; color: #00EDAF;"
-        shadow
-      >
-      </a-box>
+      <a-entity xrextras-named-image-target="name: model-target">
+        <!-- Add a child entity that can be rotated independently of the image target. -->
+        <!-- Object -->
+        <a-box
+          position="-1.7 0.5 -2"
+          rotation="0 45 0"
+          material="roughness: 0.8; metalness: 0.2; color: #00EDAF;"
+          shadow
+        >
+        </a-box>
 
-      <a-sphere
-        position="-1.175 1.25 -5.2"
-        radius="1.25"
-        material="roughness: 0.8; metalness: 0.2; color: #DD0065;"
-        shadow
-      >
-      </a-sphere>
+        <a-sphere
+          position="-1.175 1.25 -5.2"
+          radius="1.25"
+          material="roughness: 0.8; metalness: 0.2; color: #DD0065;"
+          shadow
+        >
+        </a-sphere>
 
-      <a-cylinder
-        position="2 0.75 -1.85"
-        radius="0.5"
-        height="1.5"
-        material="roughness: 0.8; metalness: 0.2; color: #FCEE21;"
-        shadow
-      >
-      </a-cylinder>
+        <a-cylinder
+          position="2 0.75 -1.85"
+          radius="0.5"
+          height="1.5"
+          material="roughness: 0.8; metalness: 0.2; color: #FCEE21;"
+          shadow
+        >
+        </a-cylinder>
 
-      <a-circle
-        position="0 0 -4"
-        rotation="-90 0 0"
-        radius="4"
-        material="roughness: 0.8; metalness: 0.5; color: #AD50FF"
-        shadow
-      >
-      </a-circle>
+        <a-circle
+          position="0 0 -4"
+          rotation="-90 0 0"
+          radius="4"
+          material="roughness: 0.8; metalness: 0.5; color: #AD50FF"
+          shadow
+        >
+        </a-circle>
+      </a-entity>
     </a-scene>
     <script>
       // Simple script to reset the camera position to its initial position.
