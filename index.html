@@ -79,7 +79,6 @@
         position="1 4.3 2.5"
       >
       </a-entity>
-
       <a-entity
         light="type: directional; castShadow: false; intensity: 0.5;"
         position="-0.8 3 1.85"
@@ -90,28 +89,17 @@
 
       <a-entity xrextras-named-image-target="name: model-target">
         <a-entity
-          animation="easing: linear; property:rotation; dur:50000; to:0 360 0; loop: true;"
+          animation="easing: linear; property:rotation; dur:5000; to:0 360 0; loop: true;"
         >
-          <a-entity
-            animation="property: position; from: 0 -1 0; to:0 0.5 0; dir: alternate; dur:5000; loop:true; easing: easeInOutCubic"
+          <a-icosahedron
+            xrextras-one-finger-rotate
+            material="roughness: 0.8; metalness: 0.2; color: #00EDAF;"
+            shadow
           >
-            <a-entity
-              id="sphereWrapper"
-              position="0 0 0"
-              rotation="0 0 0"
-              scale="1 1 1"
-              visible="true"
-            >
-            </a-entity>
-          </a-entity>
+          </a-icosahedron>
         </a-entity>
+
         <a-sky color="black" scale="0.002 0.002 0.002" positon="0 1 0"></a-sky>
-        <!-- <a-box
-          xrextras-one-finger-rotate
-          material="roughness: 0.8; metalness: 0.2; color: #00EDAF;"
-          shadow
-        >
-        </a-box> -->
       </a-entity>
     </a-scene>
     <script>
