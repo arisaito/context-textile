@@ -27,12 +27,17 @@
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"
     ></script>
+
+    <!-- other library -->
+    <script src="https://rawgit.com/protyze/aframe-curve-component/master/dist/aframe-curve-component.min.js"></script>
+    <script src="https://rawgit.com/protyze/aframe-alongpath-component/master/dist/aframe-alongpath-component.min.js"></script>
+    <script src="https://wizgrav.github.io/aframe-effects/dist/aframe-effects.js"></script>
   </head>
   <body>
     <!-- 2D overlay UI can be done in HTML -->
     <div id="overlay">
       <div id="loadingScreen">
-        <h2>loading...</h2>
+        <h3>loading...</h3>
       </div>
     </div>
 
@@ -46,10 +51,20 @@
     >
       <a-assets></a-assets>
 
+      <!-- alongpath -->
+      <a-curve id="track1">
+        <a-curve-point position="0 0 0"></a-curve-point>
+        <a-curve-point position="0 0 27"></a-curve-point>
+        <a-curve-point position="0 0 27"></a-curve-point>
+        <a-curve-point position="0 0 0"></a-curve-point>
+        <a-curve-point position="0 0 0"></a-curve-point>
+      </a-curve>
+
       <a-camera
         position="0 8 8"
         raycaster="objects: .cantap"
         cursor="fuse: false; rayOrigin: mouse;"
+        alongpath="curve: #track1; loop: true; dur: 40000; delay: 10000; easing: easeInOutCubic;"
       ></a-camera>
 
       <!-- Light -->
@@ -73,12 +88,30 @@
       <a-light type="ambient" intensity="1"></a-light>
 
       <a-entity xrextras-named-image-target="name: model-target">
-        <a-box
+        <a-entity
+          animation="easing: linear; property:rotation; dur:50000; to:0 360 0; loop: true;"
+        >
+          <a-entity
+            animation="property: position; from: 0 -1 0; to:0 0.5 0; dir: alternate; dur:5000; loop:true; easing: easeInOutCubic"
+          >
+            <a-entity
+              id="sphereWrapper"
+              position="0 0 0"
+              rotation="0 0 0"
+              scale="1 1 1"
+              visible="true"
+            >
+            </a-entity>
+          </a-entity>
+        </a-entity>
+
+        <a-sky color="black" scale="0.002 0.002 0.002" positon="0 1 0"></a-sky>
+        <!-- <a-box
           xrextras-one-finger-rotate
           material="roughness: 0.8; metalness: 0.2; color: #00EDAF;"
           shadow
         >
-        </a-box>
+        </a-box> -->
       </a-entity>
     </a-scene>
     <script>
