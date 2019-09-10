@@ -37,7 +37,7 @@
     <!-- 2D overlay UI can be done in HTML -->
     <div id="overlay">
       <div id="loadingScreen">
-        <h3>loading...</h3>
+        <p>loading...</p>
       </div>
     </div>
 
@@ -87,16 +87,14 @@
       <a-light type="ambient" intensity="1"></a-light>
 
       <a-entity xrextras-named-image-target="name: model-target">
-        <a-entity
-          animation="easing: linear; property:rotation; dur:5000; to:0 360 0; loop: true;"
-        >
-          <a-icosahedron
-            xrextras-one-finger-rotate
-            material="roughness: 0.8; metalness: 0.2; color: #00EDAF;"
-            shadow
-          >
-          </a-icosahedron>
-        </a-entity>
+        <a-icosahedron
+          xrextras-one-finger-rotate
+          material="roughness: 0.8; metalness: 0.2; color: #00EDAF;"
+          shadow
+          ><a-entity
+            animation="easing: linear; property:rotation; dur:5000; to:0 360 0; loop: true;"
+          ></a-entity>
+        </a-icosahedron>
 
         <a-sky
           id="fade-sky"
