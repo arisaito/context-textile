@@ -29,9 +29,12 @@
     <a-scene embedded arjs="debugUIEnabled:false;" vr-mode-ui="enabled: false">
       <a-assets></a-assets>
 
-      <a-entity camera cursor="fuse: false; rayOrigin: mouse;">
-        <a-entity id="cursor" cursor="rayOrigin: mouse;"> </a-entity
+      <a-entity camera look-controls>
+        <a-entity id="cursor" cursor="rayOrigin: mouse;"></a-entity
       ></a-entity>
+      <a-entity id="player" collider-check>
+        <a-entity raycaster="objects: .collidable"></a-entity>
+      </a-entity>
 
       <!-- Light -->
       <a-entity
@@ -48,41 +51,21 @@
 
       <a-marker preset="custom" type="pattern" url="src/context.patt">
         <a-entity
+          id="target"
+          cursor-listener
+          class="collidable"
           animation="property: rotation; to: 0 0 360; loop: true; easing: linear; dur: 10000;"
         >
           <a-icosahedron
-            cursor-listener
             scale="0.6 0.6 0.6"
             position="0 0 0"
             rotation="0 0 0"
-            material="roughness: 0.8; metalness: 0.2; color: pink;"
+            material="color: white;"
           >
           </a-icosahedron>
         </a-entity>
       </a-marker>
     </a-scene>
-    <script>
-      AFRAME.registerComponent("cursor-listener", {
-        init: function() {
-          this.el.addEventListener("click", function(evt) {
-            this.seAttribute(
-              "animation",
-              "property: rotation; to: 0 360 0; dur: 500; loop: false; easing: easeInOutCubic;"
-            );
-          });
-        }
-      });
-      // AFRAME.registerComponent("registerevents", {
-      //   init: function() {
-      //     var marker = this.el;
-
-      //     marker.addEventListener("markerFound", function() {
-      //       var markerId = marker.id;
-      //       var sky = document.getElementById("fade-sky");
-      //       $(sky).fadeIn("slow");
-      //     });
-      //   }
-      // });
-    </script>
+    <script src="js/cursor.js"></script>
   </body>
 </html>
