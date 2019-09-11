@@ -26,40 +26,25 @@
     <script src="https://wizgrav.github.io/aframe-effects/dist/aframe-effects.js"></script>
   </head>
   <body>
-    <!-- 2D overlay UI can be done in HTML -->
-    <!-- <div id="overlay">
-      <div id="loadingScreen">
-        <p>loading...</p>
-      </div>
-    </div> -->
-
-    <!-- Add the 'xrweb' attribute to your scene to make it an 8th Wall Web A-FRAME scene. -->
     <a-scene
-      xrweb="disableWorldTracking: true"
       antialias="true"
-      xrextras-almost-there
-      xrextras-runtime-error
       embedded
       arjs="debugUIEnabled:false;"
+      vr-mode-ui="enabled: false"
     >
       <a-assets></a-assets>
 
-      <a-camera
-        position="0 0 0"
-        raycaster="objects: .cantap"
+      <a-entity camera
         cursor="fuse: false; rayOrigin: mouse;"
       >
         <a-entity id="cursor" cursor="rayOrigin: mouse;"> </a-entity
-      ></a-camera>
+      ></a-entity>
 
       <!-- Light -->
       <a-entity
         light="type: directional;
                castShadow: true;
                intensity: 0.8;
-               shadowCameraTop: 7;
-               shadowMapHeight: 1024;
-               shadowMapWidth: 1024;"
         position="1 4.3 2.5"
       >
       </a-entity>
@@ -68,13 +53,10 @@
         position="-0.8 3 1.85"
       >
       </a-entity>
-
-      <a-light type="ambient" intensity="1"></a-light>
-
     
       <a-marker preset="custom" type="pattern" url="src/context.patt">
-        <a-entity cursor-listener>
           <a-entity
+          cursor-listener
             animation="property: rotation; to: 0 360 360; loop: true; easing: linear; dur: 1000;"
           >
             <a-icosahedron
@@ -83,9 +65,7 @@
               animation="property: rotation; to: 0 360 0; dur: 1500; easing: linear"
             >
             </a-icosahedron>
-          </a-entity>
         </a-entity>
-      </a-marker>
 
         <!-- <a-sky
           radius="200"
@@ -106,7 +86,7 @@
           scale="0.002 0.002 0.002"
           positon="0 1 0"
         ></a-sky> -->
-      </a-entity>
+        </a-marker>
     </a-scene>
     <script>
         // Basic example of controlling the loading screen
@@ -132,7 +112,6 @@
 
         AFRAME.registerComponent("cursor-listener", {
           init: function() {
-            var lastIndex = -1;
             this.el.addEventListener("click", function(evt) {
               this.seAttribute(
                 "animation",
@@ -141,17 +120,17 @@
             });
           }
         });
-        AFRAME.registerComponent("registerevents", {
-          init: function() {
-            var marker = this.el;
+        // AFRAME.registerComponent("registerevents", {
+        //   init: function() {
+        //     var marker = this.el;
 
-            marker.addEventListener("markerFound", function() {
-              var markerId = marker.id;
-              // var sky = document.getElementById("fade-sky");
-              // $(sky).fadeIn("slow");
-            });
-          }
-        });
+        //     marker.addEventListener("markerFound", function() {
+        //       var markerId = marker.id;
+        //       var sky = document.getElementById("fade-sky");
+        //       $(sky).fadeIn("slow");
+        //     });
+        //   }
+        // });
     </script>
   </body>
 </html>
