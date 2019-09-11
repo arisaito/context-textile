@@ -4,24 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>textile</title>
+    <title>AR.js</title>
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
       rel="stylesheet"
     />
-    <!-- We've included a slightly modified version of A-Frame, which fixes some polish concerns -->
-    <script src="//cdn.8thwall.com/web/aframe/8frame-0.8.2.min.js"></script>
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"></script>
 
-    <!-- XR Extras - provides utilities like load screen, almost there, and error handling.
-         See github.com/8thwall/web/xrextras -->
-    <script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
-
-    <!-- 8thWall Web - Replace the app key here with your own app key -->
-    <script
-      async
-      src="//apps.8thwall.com/xrweb?appKey=jYZU3acZmXYTem0Cv4yHsKQOHlFji0vYM22qbOZyeQXJUyzgkkkN5thXfMvIQ27hme9XTp"
-    ></script>
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -30,6 +21,8 @@
 
     <!-- other library -->
     <script src="https://unpkg.com/aframe-environment-component@1.0.0/dist/aframe-environment-component.min.js"></script>
+    <!-- <script src="https://rawgit.com/protyze/aframe-curve-component/master/dist/aframe-curve-component.min.js"></script>
+    <script src="https://rawgit.com/protyze/aframe-alongpath-component/master/dist/aframe-alongpath-component.min.js"></script> -->
     <script src="https://wizgrav.github.io/aframe-effects/dist/aframe-effects.js"></script>
   </head>
   <body>
@@ -54,7 +47,8 @@
         position="0 0 0"
         raycaster="objects: .cantap"
         cursor="fuse: false; rayOrigin: mouse;"
-        alongpath="curve: #track1; loop: true; dur: 40000; delay: 10000; easing: easeInOutCubic;"
+      >
+        <a-entity id="cursor" cursor="rayOrigin: mouse;"> </a-entity
       ></a-camera>
 
       <!-- Light -->
@@ -77,16 +71,20 @@
       <a-light type="ambient" intensity="1"></a-light>
 
       <a-entity xrextras-named-image-target="name: model-target">
-        <a-icosahedron
-          scale="0.6 0.6 0.6"
-          xrextras-one-finger-rotate
-          material="roughness: 0.8; metalness: 0.2; color: #00EDAF;"
-          shadow
-          animation="property: rotation; to: 0 360 0; dur: 1500; easing: linear"
-        >
-        </a-icosahedron>
+        <a-entity cursor-listener>
+          <a-entity
+            animation="property: rotation; to: 0 360 360; loop: true; easing: linear; dur: 1000;"
+          >
+            <a-icosahedron
+              scale="0.6 0.6 0.6"
+              material="roughness: 0.8; metalness: 0.2; color: pink;"
+              animation="property: rotation; to: 0 360 0; dur: 1500; easing: linear"
+            >
+            </a-icosahedron>
+          </a-entity>
+        </a-entity>
 
-        <a-sky
+        <!-- <a-sky
           radius="200"
           theta-length="110"
           material="shader:gradientshader;topColor:pink;bottomColor:skyblue"
@@ -94,7 +92,7 @@
           visible=""
           id="sky"
           position=""
-        ></a-sky>
+        ></a-sky> -->
 
         <!-- <a-sky
           id="fade-sky"
@@ -125,6 +123,18 @@
             if (event.detail.status == "failed") {
               loadingScreen.textContent = "Camera permissions were denied.";
             }
+          });
+        }
+      });
+
+      AFRAME.registerComponent("cursor-listener", {
+        init: function() {
+          var lastIndex = -1;
+          this.el.addEventListener("click", function(evt) {
+            this.seAttribute(
+              "animation",
+              "property: rotation; to: 0 360 0; dur: 500; loop: false;"
+            );
           });
         }
       });
