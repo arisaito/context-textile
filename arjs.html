@@ -62,53 +62,12 @@
             <a-icosahedron
               scale="0.6 0.6 0.6"
               material="roughness: 0.8; metalness: 0.2; color: pink;"
-              animation="property: rotation; to: 0 360 0; dur: 1500; easing: linear"
             >
             </a-icosahedron>
         </a-entity>
-
-        <!-- <a-sky
-          radius="200"
-          theta-length="110"
-          material="shader:gradientshader;topColor:pink;bottomColor:skyblue"
-          geometry=""
-          visible=""
-          id="sky"
-          position=""
-        ></a-sky> -->
-
-        <!-- <a-sky
-          id="fade-sky"
-          color="black"
-          attribute="material.opacity"
-          begin="fade"
-          to="0"
-          scale="0.002 0.002 0.002"
-          positon="0 1 0"
-        ></a-sky> -->
         </a-marker>
     </a-scene>
     <script>
-        // Basic example of controlling the loading screen
-      //   AFRAME.registerComponent("loading-screen", {
-      //     init: function() {
-      //       const scene = this.el.sceneEl;
-      //       scene.addEventListener("realityready", () => {
-      //         // loadingScreen.style.display = "none";
-      //         $(loadingScreen).fadeTo("slow", 0);
-      //       });
-
-        //     scene.addEventListener("realityerror", () => {
-        //       loadingScreen.textContent = "An error has occurred.";
-        //     });
-
-        //     scene.addEventListener("camerastatuschange", event => {
-        //       if (event.detail.status == "failed") {
-        //         loadingScreen.textContent = "Camera permissions were denied.";
-        //       }
-        //     });
-        //   }
-        // });
 
         AFRAME.registerComponent("cursor-listener", {
           init: function() {
