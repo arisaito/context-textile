@@ -29,8 +29,9 @@
     ></script>
 
     <!-- other library -->
-    <script src="https://rawgit.com/protyze/aframe-curve-component/master/dist/aframe-curve-component.min.js"></script>
-    <script src="https://rawgit.com/protyze/aframe-alongpath-component/master/dist/aframe-alongpath-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.0.0/dist/aframe-environment-component.min.js"></script>
+    <!-- <script src="https://rawgit.com/protyze/aframe-curve-component/master/dist/aframe-curve-component.min.js"></script>
+    <script src="https://rawgit.com/protyze/aframe-alongpath-component/master/dist/aframe-alongpath-component.min.js"></script> -->
     <script src="https://wizgrav.github.io/aframe-effects/dist/aframe-effects.js"></script>
   </head>
   <body>
@@ -88,15 +89,25 @@
 
       <a-entity xrextras-named-image-target="name: model-target">
         <a-icosahedron
+          scale="0.6 0.6 0.6"
           xrextras-one-finger-rotate
           material="roughness: 0.8; metalness: 0.2; color: #00EDAF;"
           shadow
-          ><a-entity
-            animation="easing: linear; property:rotation; dur:5000; to:0 360 0; loop: true;"
-          ></a-entity>
+          animation="property: rotation; to: 0 360 0; dur: 1500; easing: linear"
+        >
         </a-icosahedron>
 
         <a-sky
+          radius="200"
+          theta-length="110"
+          material="shader:gradientshader;topColor:pink;bottomColor:skyblue"
+          geometry=""
+          visible=""
+          id="sky"
+          position=""
+        ></a-sky>
+
+        <!-- <a-sky
           id="fade-sky"
           color="black"
           attribute="material.opacity"
@@ -104,7 +115,7 @@
           to="0"
           scale="0.002 0.002 0.002"
           positon="0 1 0"
-        ></a-sky>
+        ></a-sky> -->
       </a-entity>
     </a-scene>
     <script>
@@ -134,8 +145,8 @@
 
           marker.addEventListener("markerFound", function() {
             var markerId = marker.id;
-            var sky = document.getElementById("fade-sky");
-            $(sky).fadeIn("slow");
+            // var sky = document.getElementById("fade-sky");
+            // $(sky).fadeIn("slow");
           });
         }
       });
