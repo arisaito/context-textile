@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>AR.js</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
       rel="stylesheet"
@@ -27,11 +27,11 @@
   </head>
   <body>
     <!-- 2D overlay UI can be done in HTML -->
-    <div id="overlay">
+    <!-- <div id="overlay">
       <div id="loadingScreen">
         <p>loading...</p>
       </div>
-    </div>
+    </div> -->
 
     <!-- Add the 'xrweb' attribute to your scene to make it an 8th Wall Web A-FRAME scene. -->
     <a-scene
@@ -39,7 +39,8 @@
       antialias="true"
       xrextras-almost-there
       xrextras-runtime-error
-      loading-screen
+      embedded
+      arjs="debugUIEnabled:false;"
     >
       <a-assets></a-assets>
 
@@ -70,7 +71,8 @@
 
       <a-light type="ambient" intensity="1"></a-light>
 
-      <a-entity xrextras-named-image-target="name: model-target">
+    
+      <a-marker preset="custom" type="pattern" url="src/context.patt">
         <a-entity cursor-listener>
           <a-entity
             animation="property: rotation; to: 0 360 360; loop: true; easing: linear; dur: 1000;"
@@ -83,6 +85,7 @@
             </a-icosahedron>
           </a-entity>
         </a-entity>
+      </a-marker>
 
         <!-- <a-sky
           radius="200"
@@ -106,49 +109,49 @@
       </a-entity>
     </a-scene>
     <script>
-      // Basic example of controlling the loading screen
-      AFRAME.registerComponent("loading-screen", {
-        init: function() {
-          const scene = this.el.sceneEl;
-          scene.addEventListener("realityready", () => {
-            // loadingScreen.style.display = "none";
-            $(loadingScreen).fadeTo("slow", 0);
-          });
+        // Basic example of controlling the loading screen
+      //   AFRAME.registerComponent("loading-screen", {
+      //     init: function() {
+      //       const scene = this.el.sceneEl;
+      //       scene.addEventListener("realityready", () => {
+      //         // loadingScreen.style.display = "none";
+      //         $(loadingScreen).fadeTo("slow", 0);
+      //       });
 
-          scene.addEventListener("realityerror", () => {
-            loadingScreen.textContent = "An error has occurred.";
-          });
+        //     scene.addEventListener("realityerror", () => {
+        //       loadingScreen.textContent = "An error has occurred.";
+        //     });
 
-          scene.addEventListener("camerastatuschange", event => {
-            if (event.detail.status == "failed") {
-              loadingScreen.textContent = "Camera permissions were denied.";
-            }
-          });
-        }
-      });
+        //     scene.addEventListener("camerastatuschange", event => {
+        //       if (event.detail.status == "failed") {
+        //         loadingScreen.textContent = "Camera permissions were denied.";
+        //       }
+        //     });
+        //   }
+        // });
 
-      AFRAME.registerComponent("cursor-listener", {
-        init: function() {
-          var lastIndex = -1;
-          this.el.addEventListener("click", function(evt) {
-            this.seAttribute(
-              "animation",
-              "property: rotation; to: 0 360 0; dur: 500; loop: false;"
-            );
-          });
-        }
-      });
-      AFRAME.registerComponent("registerevents", {
-        init: function() {
-          var marker = this.el;
+        AFRAME.registerComponent("cursor-listener", {
+          init: function() {
+            var lastIndex = -1;
+            this.el.addEventListener("click", function(evt) {
+              this.seAttribute(
+                "animation",
+                "property: rotation; to: 0 360 0; dur: 500; loop: false;"
+              );
+            });
+          }
+        });
+        AFRAME.registerComponent("registerevents", {
+          init: function() {
+            var marker = this.el;
 
-          marker.addEventListener("markerFound", function() {
-            var markerId = marker.id;
-            // var sky = document.getElementById("fade-sky");
-            // $(sky).fadeIn("slow");
-          });
-        }
-      });
+            marker.addEventListener("markerFound", function() {
+              var markerId = marker.id;
+              // var sky = document.getElementById("fade-sky");
+              // $(sky).fadeIn("slow");
+            });
+          }
+        });
     </script>
   </body>
 </html>
