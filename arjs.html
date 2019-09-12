@@ -23,9 +23,9 @@
     <a-scene embedded arjs="debugUIEnabled:false;" vr-mode-ui="enabled: false">
       <a-assets></a-assets>
 
-      <a-entity camera look-controls>
-        <a-entity id="cursor" cursor="rayOrigin: mouse;"></a-entity
-      ></a-entity>
+      <a-entity camera>
+        <!-- <a-entity id="cursor" cursor="rayOrigin: mouse;"></a-entity
+      ></a-entity> -->
       <a-entity id="player" collider-check>
         <a-entity raycaster="objects: .collidable"></a-entity>
       </a-entity>
@@ -56,7 +56,7 @@
       </a-entity> -->
 
       <a-marker preset="custom" type="pattern" url="src/context.patt">
-        <a-entity id="target" cursor-listener class="collidable">
+        <a-entity id="target" cursor-listener class="collidable" class="clickable">
           <a-icosahedron
             scale="0.6 0.6 0.6"
             position="0 0 0"
