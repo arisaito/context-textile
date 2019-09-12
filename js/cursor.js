@@ -9,7 +9,8 @@ let shape =
 
 AFRAME.registerComponent("cursor-listener", {
   init: function() {
-    target.addEventListener("touchstart", function(evt) {
+    target.addEventListener("click", function(evt) {
+      event.preventDefault();
       // start = true;
       // if (start) {
       console.log("touch");
