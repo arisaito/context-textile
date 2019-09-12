@@ -23,6 +23,7 @@ var scene3 =
 
 touchArea.addEventListener("touchstart", e => {
   event.preventDefault();
+  $(touchArea).remove();
   target.innerHTML = obj1;
   sceneA.innerHTML = scene1;
 
@@ -30,21 +31,18 @@ touchArea.addEventListener("touchstart", e => {
     console.log("シーン2発火");
     target.innerHTML = obj2;
     sceneB.innerHTML = scene2;
-    setTimeout(function() {
-      sceneA.style.display = "none";
-    }, 1000);
   }, 3000);
   setTimeout(function sceneEvt3() {
     console.log("シーン3発火");
     target.innerHTML = obj3;
     sceneC.innerHTML = scene3;
-    setTimeout(function() {
-      sceneB.style.display = "none";
-    }, 1000);
   }, 6000);
   setTimeout(function sceneEvt4() {
     console.log("シーン4発火");
     target.innerHTML = obj4;
+    $(sceneA).remove();
+    $(sceneB).remove();
+    $(sceneC).remove();
   }, 9000);
 });
 
