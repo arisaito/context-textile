@@ -4,23 +4,96 @@
   </head>
   <body>
     <a-scene>
-      <a-assets>
-        <a-asset-item
-          id="cup3-obj"
-          src="src/model/cup3/10276_Coffee_Mug_v2_Iterations-2.obj"
-        ></a-asset-item>
-      </a-assets>
+      <a-assets> </a-assets>
+
+      <!-- マグカップ 2つ-->
+      <a-entity position="0 0 -2">
+        <a-entity
+          id="left"
+          position="-0.47 0 0.47"
+          scale="0.3 0.3 0.3"
+          animation="property: rotation; to: 0 720 0; loop: false; dur: 1000; easing: easeOutCubic"
+        >
+          <a-torus
+            rotation="0 0 0"
+            scale="0.3 0.3 0.3"
+            radius-tubular="0.1"
+            color="#ece8e5"
+          ></a-torus>
+          <a-cylinder
+            position="0.58 0 0"
+            rotation="0 0 0"
+            scale="0.5 1.2 0.5"
+            color="#ece8e5"
+          ></a-cylinder>
+          <a-cylinder
+            position="0.58 0.06 0"
+            rotation="0 0 0"
+            scale="0.4 1.1 0.4"
+            color="#3a211a"
+          ></a-cylinder>
+        </a-entity>
+        <a-entity
+          id="right"
+          scale="0.3 0.3 0.3"
+          position="0.35 0 -0.18"
+          rotation="0 0 0"
+          animation="property: rotation; to: 0 570 0; loop: false; dur: 1000; easing: easeOutCubic"
+        >
+          <a-torus
+            rotation="0 0 0"
+            scale="0.3 0.3 0.3"
+            radius-tubular="0.1"
+            color="#ece8e5"
+          ></a-torus>
+          <a-cylinder
+            position="0.58 0 0"
+            rotation="0 0 0"
+            scale="0.5 1.2 0.5"
+            color="#ece8e5"
+          ></a-cylinder>
+          <a-cylinder
+            position="0.58 0.06 0"
+            rotation="0 0 0"
+            scale="0.4 1.1 0.4"
+            color="#3a211a"
+          ></a-cylinder>
+        </a-entity>
+      </a-entity>
+
+      <!--  -->
 
       <a-entity
+        scale="0.03 0.03 0.03"
+        animation="property: rotation; to: 0 720 0; loop: false; dur: 1000; easing: easeOutCubic"
+        ><a-obj-model
+          id="left"
+          rotation="-90 -140 0"
+          position="-11.671  0 16"
+          src="#cup3-obj"
+          material="color: #ece8e5"
+          animation="property: rotation; to: 0 720 0; loop: false; dur: 1000; easing: easeOutCubic"
+        ></a-obj-model
+        ><a-obj-model
+          rotation="-90 0 0"
+          position="1 0 0"
+          src="#cup3-obj"
+          material="color: #ece8e5"
+          animation="property: rotation; to: 0 720 0; loop: false; dur: 1000; easing: easeOutCubic"
+        ></a-obj-model></a-entity
+      >';
+
+      <!-- 指輪 -->
+      <!-- <a-entity
         position="0 0 -2"
         scale="0.3 0.3 0.3"
         animation="property: rotation; to: 0 720 0; loop: false; dur: 1000; easing: easeOutCubic"
       >
         <a-torus radius-tubular="0.02" color="fbf0f0" radius="0.8"></a-torus>
         <a-octahedron position="0 0.9 0" rotation="-90 0 0" scale="0.3 0.3 0.3" color="#ffb5b5"></a-a-octahedron>
-      </a-entity>
-      
-      <a-entity scale="0.03 0.03 0.03"
+      </a-entity> -->
+
+      <!-- <a-entity scale="0.03 0.03 0.03"
         ><a-obj-model
           id="left"
           rotation="-90 -140 0"
@@ -36,7 +109,8 @@
           material="color: #ece8e5"
           animation="property: rotation; to: 0 720 0; loop: false; dur: 1000; easing: easeOutCubic"
         ></a-obj-model
-      ></a-entity>
+      ></a-entity> -->
+
       <!-- シーンA -->
 
       <!-- <a-sky color="#f59292"></a-sky>
@@ -83,7 +157,7 @@
         color="#fbf0f0"
       ></a-box> -->
 
-      <a-sky color="#132743"></a-sky>
+      <a-sky color="#f59292"></a-sky>
     </a-scene>
   </body>
 </html>
