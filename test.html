@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item
+          id="flo1-obj"
+          src="src/model/sundrop/snowdrop.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="flo1-mtl"
+          src="src/model/sundrop/snowdrop.mtl"
+        ></a-asset-item>
+        <a-asset-item
+          id="cup3-obj"
+          src="src/model/cup3/10276_Coffee_Mug_v2_Iterations-2.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="cup3-mtl"
+          src="src/model/cup3/10276_Coffee_Mug_v2_Iterations-2.mtl"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-entity
+        position="0 0 -3"
+        scale="0.05 0.05 0.05"
+        animation="property: rotation; to: 0 0 720; loop: false; dur: 1000; easing: easeOutCubic"
+        ><a-obj-model
+          rotation="-90 0 0"
+          src="#cup3-obj"
+          material="color: #fff8a6"
+        ></a-obj-model
+      ></a-entity>
+      <a-sky color="pink"></a-sky>
+    </a-scene>
+  </body>
+</html>
