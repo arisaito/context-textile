@@ -6,11 +6,11 @@ var sceneB = document.getElementById("sceneB");
 var sceneC = document.getElementById("sceneC");
 
 var obj1 =
-  '<a-entity scale="0.05 0.05 0.05" animation="property: rotation; to: 0 1000 0; loop: false; dur: 1000; easing: easeOutCubic"><a-obj-model rotation="-90 0 0" src="#cup3-obj" material="color: #fff8a6"></a-obj-model></a-entity>';
+  '<a-entity scale="0.03 0.03 0.03"><a-obj-model id="left" rotation="-90 -140 0" position="-11.671  0 16" src="#cup3-obj" material="color: #ece8e5" animation="property: rotation; to: 0 720 0; loop: false; dur: 1000; easing: easeOutCubic"></a-obj-model><a-obj-model rotation="-90 0 0" position="1 0 0" src="#cup3-obj" material="color: #ece8e5" animation="property: rotation; to: 0 720 0; loop: false; dur: 1000; easing: easeOutCubic"></a-obj-model></a-entity>';
 var obj2 =
-  '<a-octahedron scale="0.6 0.6 0.6" position="0 0 0" rotation="0 0 0" material="color: #ffcbcb;" animation="property: rotation; to: 0 0 1000; loop: false; dur: 1000; easing: easeOutCubic"></a-octahedron>';
+  '<a-entity scale="0.3 0.3 0.3" animation="property: rotation; to: 0 720 0; loop: false; dur: 1000; easing: easeOutCubic"><a-torus radius-tubular="0.02" color="fbf0f0" radius="0.8"></a-torus><a-octahedron position="0 0.9 0" rotation="-90 0 0" scale="0.3 0.3 0.3" color="#ffb5b5"></a-a-octahedron></a-entity>';
 var obj3 =
-  '<a-entity scale="0.05 0.05 0.05" animation="property: rotation; to: 0 1000 0; loop: false; dur: 1000; easing: easeOutCubic"><a-obj-model rotation="-90 0 0" src="#cup3-obj" material="color: #fbf0f0"></a-obj-model></a-entity><a-box position="0.33 -0.13 1.43" rotation="0 60 0" scale="4 0.1 4" color="#fbf0f0"></a-box>';
+  '<a-entity scale="0.05 0.05 0.05" animation="property: rotation; to: 0 1000 0; loop: false; dur: 1000; easing: easeOutCubic"><a-obj-model rotation="-90 0 0" src="#cup3-obj" material="color: #fbf0f0"></a-obj-model></a-entity>';
 var obj4 =
   '<a-dodecahedron scale="0.6 0.6 0.6" position="0 0 0" rotation="0 0 0" material="color: black;" animation="property: rotation; to: 0 0 1000; loop: false; dur: 1000; easing: easeOutCubic;" animation__2="property: scale; to: 0 0 0; dur: 1000"></a-dodecahedron>';
 
